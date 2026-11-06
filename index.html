@@ -1,0 +1,1523 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="theme-wanghei">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Baby 成長發展藍圖</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --radius: 16px;
+    }
+    /* Mist Soft — 柔綠奶白 */
+    html.theme-mist {
+      --fg: #2a3330;
+      --muted: #6b7872;
+      --card: #f7faf7;
+      --border: #d5e0da;
+      --accent: #3d8f7a;
+      --accent-2: #e8a598;
+      --tab: #eef4f1;
+      --bg: #fbfaf6;
+      --accent-soft: color-mix(in srgb, var(--accent) 14%, transparent);
+      --hero-from: color-mix(in srgb, var(--accent) 14%, #f3faf6);
+      --hero-to: color-mix(in srgb, var(--accent-2) 16%, var(--card));
+      --shadow: 0 2px 12px color-mix(in srgb, var(--fg) 7%, transparent);
+      --now-accent: var(--accent);
+    }
+    /* Baby 卡風 — 直式百日卡：奶白＋柔海軍藍／柔藍邊＋金星 */
+    html.theme-wanghei {
+      --fg: #2a3340;
+      --muted: #6a7585;
+      --card: #fffaf3;
+      --border: #b7c9db;
+      --accent: #5b8fb8;
+      --accent-navy: #3d5a78;
+      --accent-2: #c9a05a;
+      --tab: #eef3f8;
+      --bg: #f6f0e6;
+      --accent-soft: color-mix(in srgb, var(--accent) 16%, transparent);
+      --hero-from: color-mix(in srgb, var(--accent) 10%, #f6f0e6);
+      --hero-to: color-mix(in srgb, var(--accent-2) 12%, var(--card));
+      --shadow: 0 2px 14px color-mix(in srgb, #3a4a5a 10%, transparent);
+      --now-accent: var(--accent-2);
+    }
+    @media (prefers-color-scheme: dark) {
+      html.theme-mist {
+        --fg: #e8eeeb;
+        --muted: #9aaba3;
+        --card: #1a2420;
+        --border: #2f3d37;
+        --accent: #5cb89e;
+        --accent-2: #e8a598;
+        --tab: #24302b;
+        --bg: #121916;
+        --hero-from: color-mix(in srgb, var(--accent) 18%, #15201c);
+        --hero-to: color-mix(in srgb, var(--accent-2) 12%, var(--card));
+        --shadow: 0 2px 14px rgba(0,0,0,.4);
+        --now-accent: var(--accent);
+      }
+      html.theme-wanghei {
+        --fg: #e8eef4;
+        --muted: #9aa8b5;
+        --card: #1a2430;
+        --border: #2f4050;
+        --accent: #7eb0d4;
+        --accent-navy: #9ab8d4;
+        --accent-2: #d4a574;
+        --tab: #243040;
+        --bg: #121820;
+        --hero-from: color-mix(in srgb, var(--accent) 16%, #15202a);
+        --hero-to: color-mix(in srgb, var(--accent-2) 10%, var(--card));
+        --shadow: 0 2px 14px rgba(0,0,0,.45);
+        --now-accent: var(--accent-2);
+      }
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      margin: 0 auto; padding: 24px; color: var(--fg); line-height: 1.5; max-width: 1248px;
+      background: var(--bg);
+      box-sizing: border-box;
+      width: 100%;
+    }
+    h1 { font-size: 1.45rem; margin: 0 0 8px; }
+    h2 { font-size: 1.1rem; margin: 0 0 10px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    h2 .sec-ico { font-size: 1.05rem; line-height: 1; opacity: .9; }
+    p, li { font-size: 0.95rem; }
+    .lead { margin: 0 0 10px; font-size: 0.92rem; }
+    .muted { color: var(--muted); font-size: 0.88rem; }
+    .card {
+      background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 16px 18px; margin: 12px 0; box-shadow: var(--shadow); position: relative; overflow: hidden;
+    }
+    .card.card-accent::before {
+      content: ""; position: absolute; left: 0; right: 0; top: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent-2) 70%, var(--accent)));
+    }
+    .card.card-accent-green::before {
+      background: linear-gradient(90deg, #1a9b6c, color-mix(in srgb, var(--accent) 50%, #1a9b6c));
+    }
+    .card.card-accent-amber::before {
+      background: linear-gradient(90deg, #c9851a, color-mix(in srgb, var(--accent) 40%, #c9851a));
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    th { font-weight: 600; }
+    td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+    a { color: var(--accent); }
+    .pill {
+      display: inline-block; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--border);
+      font-size: 0.78rem; color: var(--muted); margin-right: 6px; margin-bottom: 6px;
+    }
+    .tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 8px; }
+    .tabs button {
+      appearance: none; border: 1px solid var(--border); background: var(--tab); color: var(--fg);
+      border-radius: 999px; padding: 8px 14px; font-size: 0.9rem; cursor: pointer;
+    }
+    .tabs button[aria-selected="true"] { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .panel { display: none; }
+    .panel.active { display: block; }
+    .link-card { display: block; text-decoration: none; color: inherit; }
+    .link-card strong { color: var(--accent); }
+    ol.steps { padding-left: 1.2rem; margin: 0; }
+    ol.steps li { margin: 8px 0; }
+
+    .hero-strip {
+      margin: 10px 0 14px; padding: 14px 16px; border-radius: var(--radius);
+      border: 1px solid color-mix(in srgb, var(--accent) 22%, var(--border));
+      background: linear-gradient(135deg, var(--hero-from), var(--hero-to));
+      box-shadow: var(--shadow);
+    }
+    .hero-pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; }
+    .hero-pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 12px; border-radius: 999px; font-size: 0.82rem; font-weight: 560;
+      background: color-mix(in srgb, var(--card) 78%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent) 25%, var(--border));
+      color: var(--fg);
+    }
+    .hero-pill .dot {
+      width: 7px; height: 7px; border-radius: 50%; background: var(--accent); flex-shrink: 0;
+    }
+
+    .age-timeline, .health-timeline, .path-flow {
+      display: flex; flex-wrap: wrap; align-items: stretch; gap: 0; margin: 8px 0 4px;
+      list-style: none; padding: 0;
+    }
+    .age-timeline { justify-content: space-between; }
+    .tl-node {
+      flex: 1 1 72px; min-width: 64px; text-align: center; position: relative;
+      padding: 8px 4px 10px; font-size: 0.72rem; color: var(--muted);
+    }
+    .tl-node::before {
+      content: ""; display: block; width: 12px; height: 12px; margin: 0 auto 8px;
+      border-radius: 50%; border: 2px solid var(--border);
+      background: var(--card); position: relative; z-index: 1;
+    }
+    .tl-node:not(:last-child)::after {
+      content: ""; position: absolute; top: 13px; left: calc(50% + 8px); right: calc(-50% + 8px);
+      height: 2px; background: var(--border); z-index: 0;
+    }
+    .tl-node.done::before {
+      border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
+      background: var(--accent-soft);
+    }
+    .tl-node.now { color: var(--now-accent); font-weight: 700; }
+    .tl-node.now::before {
+      border-color: var(--now-accent); background: var(--now-accent);
+      box-shadow: 0 0 0 4px color-mix(in srgb, var(--now-accent) 22%, transparent);
+    }
+    .tl-node.now .tl-tag {
+      background: var(--now-accent); color: #fff;
+    }
+    .tl-node .tl-label { display: block; line-height: 1.25; }
+    .tl-node .tl-tag {
+      display: inline-block; margin-top: 4px; padding: 1px 6px; border-radius: 999px;
+      font-size: 0.65rem; font-weight: 700; letter-spacing: .02em;
+      background: var(--accent); color: #fff;
+    }
+    .tl-node.next::before {
+      border-style: dashed; border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+    }
+
+    .path-flow { gap: 8px; align-items: center; }
+    .path-chip {
+      flex: 1 1 110px; min-width: 100px; max-width: 160px;
+      padding: 10px 12px; border-radius: 12px; text-align: center;
+      border: 1px solid color-mix(in srgb, var(--accent) 22%, var(--border));
+      background: color-mix(in srgb, var(--accent) 7%, var(--card));
+    }
+    .path-chip .path-name { display: block; font-size: 0.84rem; font-weight: 650; color: var(--fg); }
+    .path-chip .path-year { display: block; margin-top: 3px; font-size: 0.72rem; color: var(--muted); }
+    .path-arrow {
+      flex: 0 0 auto; color: var(--muted); font-size: 1rem; opacity: .7; user-select: none;
+    }
+    @media (max-width: 640px) {
+      .path-arrow { display: none; }
+      .path-chip { max-width: none; }
+    }
+
+    .fee-metrics {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 10px 0 14px;
+    }
+    @media (max-width: 700px) {
+      .fee-metrics { grid-template-columns: 1fr; }
+    }
+    .fee-card {
+      border: 1px solid var(--border); border-radius: 12px; padding: 12px 14px;
+      background: color-mix(in srgb, var(--card) 92%, var(--accent-soft));
+    }
+    .fee-card .fee-code { font-size: 0.75rem; font-weight: 700; letter-spacing: .04em; color: var(--accent); }
+    .fee-card .fee-title { font-size: 0.82rem; margin: 2px 0 8px; color: var(--muted); }
+    .fee-card .fee-num {
+      font-size: 1.15rem; font-weight: 700; font-variant-numeric: tabular-nums; letter-spacing: -0.02em;
+    }
+    .fee-card .fee-sub { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
+    .fee-bar {
+      margin-top: 10px; height: 8px; border-radius: 999px; background: color-mix(in srgb, var(--border) 80%, transparent);
+      overflow: hidden;
+    }
+    .fee-bar > span {
+      display: block; height: 100%; border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent-2) 55%, var(--accent)));
+    }
+    .fee-card.fee-b .fee-bar > span {
+      background: linear-gradient(90deg, #c45c2a, color-mix(in srgb, var(--accent) 40%, #c45c2a));
+    }
+    .fee-card.fee-a2 .fee-bar > span {
+      background: linear-gradient(90deg, #2a8f6e, color-mix(in srgb, var(--accent) 45%, #2a8f6e));
+    }
+
+    .check-group { margin: 12px 0 4px; }
+    .check-group h3 { font-size: 0.95rem; margin: 0 0 8px; font-weight: 600; }
+    .check-list { list-style: none; padding: 0; margin: 0; }
+    .check-list li { display: flex; align-items: flex-start; gap: 10px; margin: 8px 0; font-size: 0.92rem; }
+    .check-list input[type=checkbox] {
+      appearance: auto; width: 1.1rem; height: 1.1rem; margin-top: 3px; flex-shrink: 0;
+      accent-color: var(--accent); cursor: pointer;
+    }
+    .check-list label { cursor: pointer; flex: 1; }
+    .check-age { display: block; font-size: 0.78rem; color: var(--muted); margin-top: 2px; font-weight: 400; }
+    .pill-now {
+      display: inline-block; margin-left: 6px; padding: 1px 7px; border-radius: 999px;
+      border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--border));
+      background: color-mix(in srgb, var(--accent) 12%, transparent);
+      color: var(--accent); font-size: 0.72rem; font-weight: 600; vertical-align: middle;
+    }
+    .check-list li.now-typical {
+      padding: 6px 8px; margin-left: -8px; margin-right: -8px;
+      border-radius: 10px;
+      background: color-mix(in srgb, var(--accent) 6%, transparent);
+    }
+    .check-group .plan-sub {
+      font-size: 0.8rem; color: var(--muted); font-weight: 400; margin: -4px 0 8px;
+    }
+    .btn-clear {
+      appearance: none; border: 1px solid var(--border); background: var(--tab); color: var(--fg);
+      border-radius: 999px; padding: 6px 12px; font-size: 0.82rem; cursor: pointer; margin-top: 10px;
+    }
+    .btn-clear:hover { border-color: var(--accent); color: var(--accent); }
+
+    .diary-form { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px 12px; margin: 12px 0; align-items: end; }
+    .diary-form label { display: flex; flex-direction: column; gap: 4px; font-size: 0.82rem; color: var(--muted); }
+    .diary-form label.span-2 { grid-column: span 2; }
+    .diary-form label.span-all { grid-column: 1 / -1; }
+    .diary-form input, .diary-form select, .diary-form textarea {
+      appearance: none; border: 1px solid var(--border); background: var(--card); color: var(--fg);
+      border-radius: 8px; padding: 8px 10px; font-size: 0.92rem; font-family: inherit;
+    }
+    .diary-form textarea { min-height: 56px; resize: vertical; }
+    .diary-actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 12px; }
+    .diary-actions .btn-primary {
+      appearance: none; border: 1px solid var(--accent); background: var(--accent); color: #fff;
+      border-radius: 999px; padding: 6px 14px; font-size: 0.82rem; cursor: pointer;
+    }
+    .diary-actions .btn-primary:hover { filter: brightness(1.05); }
+    .diary-latest { margin: 0 0 10px; font-size: 0.9rem; }
+    .diary-table-wrap { overflow-x: auto; margin-top: 4px; }
+    .diary-table-wrap table { min-width: 640px; }
+    .diary-table-wrap .btn-del {
+      appearance: none; border: 1px solid var(--border); background: transparent; color: var(--muted);
+      border-radius: 999px; padding: 3px 10px; font-size: 0.75rem; cursor: pointer;
+    }
+    .diary-table-wrap .btn-del:hover { border-color: #c44; color: #c44; }
+    .diary-empty { color: var(--muted); font-size: 0.88rem; margin: 8px 0; }
+
+    .public-readonly-note {
+      margin: 0 0 10px; padding: 8px 12px; border-radius: 10px;
+      border: 1px dashed color-mix(in srgb, var(--accent) 30%, var(--border));
+      background: color-mix(in srgb, var(--accent) 6%, transparent);
+      color: var(--muted); font-size: 0.85rem;
+    }
+    .is-public-readonly .diary-form,
+    .is-public-readonly .diary-actions,
+    .is-public-readonly .btn-del,
+    .is-public-readonly #growth-achievements-clear,
+    .is-public-readonly #vax-ticks-clear {
+      display: none !important;
+    }
+    .is-public-readonly .check-list input[type=checkbox] {
+      pointer-events: none; opacity: 0.55; cursor: not-allowed;
+    }
+    .is-public-readonly .check-list label { cursor: default; }
+
+    .vax-inline { list-style: none; padding: 0; margin: 0; min-width: 7.2rem; }
+    .vax-inline li { display: flex; align-items: center; gap: 6px; margin: 4px 0; font-size: 0.78rem; white-space: nowrap; }
+    .vax-inline input[type=checkbox] {
+      width: 16px; height: 16px; margin: 0; flex-shrink: 0; accent-color: var(--accent);
+    }
+    .vax-inline label { cursor: pointer; flex: 1; }
+    table th.vax-done-col, table td.vax-done-col { width: 1%; white-space: nowrap; vertical-align: top; }
+    table th.vax-site-col, table td.vax-site-col { min-width: 7.2rem; }
+    .is-public-readonly .vax-inline input[type=checkbox] {
+      pointer-events: none; opacity: 0.55; cursor: not-allowed;
+    }
+    .is-public-readonly .vax-inline label { cursor: default; }
+
+    .panel-hero-img {
+      display: block; width: 100%; max-height: 180px; object-fit: cover;
+      border-radius: var(--radius); margin: 8px 0 14px;
+      border: 1px solid var(--border); box-shadow: var(--shadow);
+      background: color-mix(in srgb, var(--accent) 8%, var(--card));
+    }
+    .h2-with-illust {
+      display: flex; align-items: center; gap: 12px; margin: 0 0 10px;
+    }
+    .h2-with-illust h2 { margin: 0; flex: 1; }
+    .section-illust {
+      width: 84px; height: 84px; object-fit: cover; border-radius: 14px;
+      border: 1px solid var(--border); flex-shrink: 0; box-shadow: var(--shadow);
+      background: color-mix(in srgb, var(--accent) 8%, var(--card));
+    }
+    @media (max-width: 520px) {
+      .section-illust { width: 64px; height: 64px; border-radius: 12px; }
+      .panel-hero-img { max-height: 140px; }
+    }
+    .path-fork {
+      display: flex; flex-direction: column; gap: 6px;
+      flex: 1 1 150px; min-width: 130px; max-width: 200px;
+    }
+    .path-fork-label {
+      font-size: 0.68rem; font-weight: 650; letter-spacing: .02em;
+      color: var(--muted); text-align: center;
+    }
+    .path-chip.path-main {
+      border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+      background: color-mix(in srgb, var(--accent) 12%, var(--card));
+    }
+    .path-chip.path-alt {
+      border-color: color-mix(in srgb, var(--accent-2) 45%, var(--border));
+      background: color-mix(in srgb, var(--accent-2) 14%, var(--card));
+    }
+    .hero-pill .dot.dot-alt { background: var(--accent-2); }
+
+    .theme-picker {
+      display: inline-flex; flex-wrap: wrap; gap: 0; margin: 0;
+      border: 1px solid var(--border); border-radius: 999px; overflow: hidden;
+      background: var(--tab);
+      box-shadow: var(--shadow);
+    }
+    .theme-picker button {
+      appearance: none; border: 0; background: transparent; color: var(--muted);
+      padding: 7px 14px; font-size: 0.82rem; cursor: pointer; font-family: inherit;
+    }
+    .theme-picker button[aria-pressed="true"] {
+      background: var(--accent); color: #fff; font-weight: 600;
+    }
+    .theme-picker-wrap {
+      position: fixed; top: 12px; right: 12px; z-index: 1000;
+      display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px;
+      margin: 0; padding: 0;
+    }
+    .theme-picker-wrap .theme-label {
+      font-size: 0.78rem; color: var(--muted);
+      background: color-mix(in srgb, var(--card) 88%, transparent);
+      padding: 4px 8px; border-radius: 999px; border: 1px solid var(--border);
+    }
+    @media (max-width: 640px) {
+      .theme-picker-wrap { top: 8px; right: 8px; }
+      .theme-picker button { padding: 6px 10px; font-size: 0.75rem; }
+      .theme-picker-wrap .theme-label { display: none; }
+    }
+
+    .hero-born-wrap {
+      display: none; text-align: center; margin: 10px 0 14px;
+    }
+    html.theme-wanghei .hero-born-wrap { display: block; }
+    html.theme-mist .hero-born-wrap { display: none; }
+    html.theme-mist .panel-hero-img.hero-mist { display: block; }
+    html.theme-wanghei .panel-hero-img.hero-mist { display: none; }
+
+    /* Baby landscape banner — cream / soft-blue / gold frame */
+    .hero-banner-frame {
+      display: block; width: 70%; max-width: 874px; margin: 12px auto 10px;
+      padding: 8px; border-radius: 18px;
+      border: 2px solid color-mix(in srgb, var(--accent-navy, var(--accent)) 42%, var(--border));
+      background:
+        linear-gradient(180deg,
+          color-mix(in srgb, var(--card) 90%, #fffaf3),
+          color-mix(in srgb, var(--accent) 10%, var(--card)));
+      box-shadow:
+        var(--shadow),
+        0 0 0 4px color-mix(in srgb, var(--accent-2) 20%, transparent),
+        inset 0 0 0 1px color-mix(in srgb, var(--accent-2) 38%, transparent);
+    }
+    .hero-banner-frame img {
+      display: block; width: 100%; height: auto;
+      object-fit: contain;
+      object-position: center;
+      border-radius: 12px;
+      border: 1px solid color-mix(in srgb, var(--accent-navy, var(--accent)) 28%, var(--border));
+      background: #fffaf3;
+    }
+    .hero-born-caption {
+      margin: 12px 0 0; font-size: 0.9rem; color: var(--fg); font-weight: 600;
+    }
+    .hero-born-caption .muted { font-weight: 400; }
+
+    .friends-label {
+      display: none; text-align: center; margin: 14px 0 8px;
+      font-size: 0.92rem; font-weight: 700; color: var(--accent-navy, var(--accent));
+      letter-spacing: .02em;
+    }
+    html.theme-wanghei .friends-label { display: block; }
+    .friends-label::before,
+    .friends-label::after {
+      content: "★";
+      color: var(--accent-2);
+      margin: 0 8px;
+      font-size: 0.78rem;
+      opacity: .9;
+    }
+
+    .friends-row {
+      display: none; flex-wrap: wrap; gap: 10px; justify-content: center; align-items: stretch;
+      margin: 0 0 6px; list-style: none; padding: 0;
+    }
+    html.theme-wanghei .friends-row { display: flex; }
+    .friend-chip {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 5px 12px; border-radius: 999px;
+      font-size: 0.78rem; font-weight: 560;
+      border: 1px solid color-mix(in srgb, var(--accent) 28%, var(--border));
+      background: color-mix(in srgb, var(--card) 88%, var(--accent-soft));
+      color: var(--muted);
+    }
+    .friend-chip.friend-featured {
+      flex-direction: column; gap: 6px; padding: 10px 12px 8px;
+      border-radius: 16px; min-width: 108px;
+      border: 2px solid color-mix(in srgb, var(--accent-2) 55%, var(--border));
+      background:
+        linear-gradient(180deg, color-mix(in srgb, var(--accent-2) 10%, var(--card)), var(--card));
+      color: var(--fg); font-weight: 700; font-size: 0.84rem;
+      box-shadow: 0 2px 10px color-mix(in srgb, var(--accent-2) 18%, transparent);
+    }
+    .friend-chip.friend-featured img {
+      width: 72px; height: 72px; object-fit: cover; border-radius: 14px;
+      border: 1px solid color-mix(in srgb, var(--accent-navy, var(--accent)) 30%, var(--border));
+      background: #fffaf3;
+      box-shadow: inset 0 0 0 1px color-mix(in srgb, #fff 40%, transparent);
+    }
+    .friend-chip.friend-soft {
+      opacity: .78; font-weight: 500; font-size: 0.74rem;
+      border-style: dashed;
+      background: color-mix(in srgb, var(--card) 94%, transparent);
+    }
+
+    html.theme-wanghei .fee-card.fee-a2 .fee-bar > span {
+      background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent-2) 50%, var(--accent)));
+    }
+    html.theme-wanghei .section-illust { display: none; }
+    html.theme-wanghei .h2-with-illust { gap: 0; }
+    html.theme-wanghei .tabs button[aria-selected="true"] {
+      background: var(--accent-navy, var(--accent));
+      border-color: var(--accent-navy, var(--accent));
+    }
+    html.theme-wanghei .theme-picker button[aria-pressed="true"] {
+      background: var(--accent-navy, var(--accent));
+    }
+    html.theme-wanghei .hero-strip {
+      border-color: color-mix(in srgb, var(--accent-navy, var(--accent)) 28%, var(--border));
+    }
+  </style>
+</head>
+<body>
+  <div class="theme-picker-wrap">
+    <span class="theme-label">主題</span>
+    <div class="theme-picker" role="group" aria-label="Theme">
+      <button type="button" id="theme-btn-mist" data-theme="mist" aria-pressed="false">Mist Soft</button>
+      <button type="button" id="theme-btn-wanghei" data-theme="wanghei" aria-pressed="true">Baby 卡風</button>
+    </div>
+  </div>
+  <h1>Baby 成長發展藍圖</h1>
+  <p class="muted" style="margin:0 0 8px">入學／學費預算／成長日記摘要</p>
+
+  <img class="panel-hero-img hero-mist" src="assets/bb-hero-mist.jpg" alt="Mist Soft 風格插圖：柔綠奶白家庭成長氛圍" width="960" height="180" />
+
+  <div class="hero-born-wrap" aria-label="Baby 卡風主視覺">
+    <div class="hero-banner-frame">
+      <img src="assets/bb-wanghei-banner.jpg" alt="Baby卡風橫幅 · 同獅子、大象、兔子朋友們" width="1290" height="487" />
+    </div>
+  </div>
+
+  <div class="hero-strip" aria-label="基線摘要">
+    <div class="hero-pills">
+      <span class="hero-pill"><span class="dot" aria-hidden="true"></span>Baby</span>
+      <span class="hero-pill"><span class="dot" aria-hidden="true"></span>出世 <strong>2026-06-09</strong></span>
+      <span class="hero-pill"><span class="dot" aria-hidden="true"></span>而家約 <strong>5 個月</strong></span>
+      <span class="hero-pill"><span class="dot" aria-hidden="true"></span><strong>(location)</strong></span>
+      <span class="hero-pill"><span class="dot" aria-hidden="true"></span>幼稚園 <strong>St Cat ＋學之園</strong> → <strong>DBSPD → DBS</strong></span>
+    </div>
+  </div>
+  <p class="muted lead">本地 :8891 同 GitHub Pages 同一份靜態頁；詳細以 Cursor Page 為準，呢度分頁睇摘要。主題可揀 Mist Soft 或 Baby 卡風。</p>
+
+  <div class="card card-accent">
+    <a class="link-card" href="https://cursor.com/canvas/store-973ed5c5-1e91-47a1-8b33-74db70fe5830/0a1910af-d71b-4d0f-b46a-4782216825a0">
+      <strong>詳細 Page（分享摘要／發展／入學／學費／健康）</strong>
+      <div class="muted">私人 Cursor Page · 有提醒表、open day、逐年學費</div>
+    </a>
+  </div>
+
+  <nav class="tabs" role="tablist" aria-label="Baby Stuff sections">
+    <button type="button" role="tab" id="tab-summary" aria-controls="panel-summary" aria-selected="true" data-tab="summary">學費摘要</button>
+    <button type="button" role="tab" id="tab-watch" aria-controls="panel-watch" aria-selected="false" data-tab="watch">提醒・Open day</button>
+    <button type="button" role="tab" id="tab-health" aria-controls="panel-health" aria-selected="false" data-tab="health">健康檢查／針程</button>
+    <button type="button" role="tab" id="tab-study" aria-controls="panel-study" aria-selected="false" data-tab="study">升學計劃</button>
+    <button type="button" role="tab" id="tab-growth" aria-controls="panel-growth" aria-selected="false" data-tab="growth">成長發展</button>
+  </nav>
+
+  <section id="panel-summary" class="panel active" role="tabpanel" aria-labelledby="tab-summary">
+    <div class="card card-accent">
+      <div class="h2-with-illust">
+        <img class="section-illust" src="assets/bb-budget-mist.jpg" alt="" width="84" height="84" />
+        <h2><span class="sec-ico" aria-hidden="true">🎓</span>升學主線</h2>
+      </div>
+      <p>幼稚園並列 <strong>St Cat（主線考慮）</strong> 同 <strong>學之園（並列；昇御海逸／紅磡）</strong>；之後 <strong>DBSPD → DBS</strong>（高中可揀 <strong>DSE</strong> 或 <strong>IBDP</strong>）。對照：ESF 標準校全程國際 IB。</p>
+      <div class="path-flow" aria-label="升學路徑圖">
+        <div class="path-chip"><span class="path-name">Playgroup</span><span class="path-year">約2027</span></div>
+        <span class="path-arrow" aria-hidden="true">→</span>
+        <div class="path-fork" aria-label="幼稚園並列選擇">
+          <span class="path-fork-label">幼稚園並列</span>
+          <div class="path-chip path-main"><span class="path-name">St Cat</span><span class="path-year">主線考慮 · PN／KT</span></div>
+          <div class="path-chip path-alt"><span class="path-name">學之園</span><span class="path-year">昇御海逸／紅磡</span></div>
+        </div>
+        <span class="path-arrow" aria-hidden="true">→</span>
+        <div class="path-chip"><span class="path-name">DBSPD</span><span class="path-year">約2032</span></div>
+        <span class="path-arrow" aria-hidden="true">→</span>
+        <div class="path-chip"><span class="path-name">DBS</span><span class="path-year">約2038</span></div>
+      </div>
+      <p class="muted">兩邊幼稚園之後都可申 DBSPD。本地直資線可喺 DBS 高中轉 IBDP；國際線多數由中學／全程跟 IB。</p>
+    </div>
+
+    <div class="card">
+      <h2><span class="sec-ico" aria-hidden="true">🔀</span>路徑代號</h2>
+      <table>
+        <tr><th>代號</th><th>意思</th></tr>
+        <tr><td>A1</td><td>幼稚園（St Cat 或學之園）→ DBSPD → DBS 本地 NSS／DSE → 本地資助大學</td></tr>
+        <tr><td>A2</td><td>同上，但高中轉 DBS IBDP（G10 Bridging + G11–G12）</td></tr>
+        <tr><td>B</td><td>ESF 標準校（KG→小學→中學 IB）→ 本地資助大學（對照）</td></tr>
+      </table>
+    </div>
+
+    <div class="card card-accent">
+      <h2><span class="sec-ico" aria-hidden="true">💰</span>三路徑總覽（港幣）</h2>
+            <div class="fee-metrics" aria-label="學費路徑比較">
+        <div class="fee-card fee-a1">
+          <div class="fee-code">A1</div>
+          <div class="fee-title">直資＋DSE</div>
+          <div class="fee-num">1,078,704</div>
+          <div class="fee-sub">至中六 · 加大學 1,276,704</div>
+          <div class="fee-bar" title="相對 B 約 45%"><span style="width:45%"></span></div>
+        </div>
+        <div class="fee-card fee-a2">
+          <div class="fee-code">A2</div>
+          <div class="fee-title">直資＋IBDP</div>
+          <div class="fee-num">1,249,104</div>
+          <div class="fee-sub">至中六 · 加大學 1,447,104 · 相對 A1 +170,400</div>
+          <div class="fee-bar" title="相對 B 約 52%"><span style="width:52%"></span></div>
+        </div>
+        <div class="fee-card fee-b">
+          <div class="fee-code">B</div>
+          <div class="fee-title">ESF 標準＋IB（含 NCL）</div>
+          <div class="fee-num">2,415,900</div>
+          <div class="fee-sub">至 Y13 · 加大學 2,613,900 · 相對 A1 +1,337,196</div>
+          <div class="fee-bar" title="100%"><span style="width:100%"></span></div>
+        </div>
+      </div>
+<table>
+        <tr><th>路徑</th><th class="num">至中六／Y13</th><th class="num">加本地資助大學4年</th><th>相對 A1</th></tr>
+        <tr><td>A1 直資＋DSE</td><td class="num">1,078,704</td><td class="num">1,276,704</td><td>—</td></tr>
+        <tr><td>A2 直資＋IBDP</td><td class="num">1,249,104</td><td class="num">1,447,104</td><td>+170,400</td></tr>
+        <tr><td>B ESF 標準＋IB（含 NCL）</td><td class="num">2,415,900</td><td class="num">2,613,900</td><td>+1,337,196</td></tr>
+      </table>
+      <p class="muted">約數：A1 ~108萬／128萬；A2 ~125萬／145萬；B ~242萬／261萬。凍價 2026/27。</p>
+    </div>
+
+    <div class="card">
+      <h2><span class="sec-ico" aria-hidden="true">📊</span>分階段小計</h2>
+      <table>
+        <tr><th>階段</th><th class="num">A1／A2</th><th class="num">B</th></tr>
+        <tr><td>幼稚園</td><td class="num">319,044（St Cat 4年；學之園見下表對照）</td><td class="num">218,000（ESF KG×2）</td></tr>
+        <tr><td>小學</td><td class="num">363,780（DBSPD×6）</td><td class="num">908,000（145k×6 + NCL 38k）</td></tr>
+        <tr><td>中學</td><td class="num">A1 395,880／A2 566,280</td><td class="num">1,289,900（Y7–13）</td></tr>
+        <tr><td>大學（參考）</td><td class="num" colspan="2">198,000（UGC 49,500×4）</td></tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2><span class="sec-ico" aria-hidden="true">📅</span>主要年費（2026/27 本地生）</h2>
+      <p class="muted">St Cat 同學之園並列；學之園數字來自校網／EDB（昇御海逸），雜費／教材費未計入。</p>
+      <table>
+        <tr><th>項目</th><th class="num">年費</th></tr>
+        <tr><td>St Cat Harbour Place（半天）</td><td class="num">64,328</td></tr>
+        <tr><td>St Cat 九龍塘 Nursery／LKG·UKG</td><td class="num">80,234／87,241</td></tr>
+        <tr><td>學之園・昇御海逸 PN（校網月費）</td><td class="num">93,600（7,800×12）</td></tr>
+        <tr><td>學之園・昇御海逸 N／LKG／UKG 粵英</td><td class="num">90,000（7,500×12）</td></tr>
+        <tr><td>學之園・昇御海逸 N／LKG／UKG 普英</td><td class="num">93,600（7,800×12）</td></tr>
+        <tr><td>DBSPD P1–P6</td><td class="num">60,630</td></tr>
+        <tr><td>DBS NSS／IB Bridging／IB G11–12</td><td class="num">65,980／65,980／151,180</td></tr>
+        <tr><td>ESF KG Abacus EN／小學／Y7–11／Y12–13</td><td class="num">109k／145k／188.3k／174.2k</td></tr>
+        <tr><td>ESF NCL（入 Y1，一次）</td><td class="num">38,000</td></tr>
+        <tr><td>UGC 資助學士（2027/28 水平）</td><td class="num">49,500</td></tr>
+      </table>
+    </div>
+
+    <p class="muted">來源：EDB 收費證明書、DBSPD／DBS 學費頁、ESF school-fees、政府 UGC 學費公布。私人詳細時間線／住址／逐年表見上方 Page。</p>
+  </section>
+
+  <section id="panel-watch" class="panel" role="tabpanel" aria-labelledby="tab-watch">
+    <div class="card">
+      <h2>年齡備註（截至 2026-11-05）</h2>
+      <p>出世 <strong>2026-06-09</strong> → 而家約 5 個月。2027/28 PN／K1 窗多數唔夾年齡；而家當 recon。真正有用約 <strong>2028 PN／2029 K1</strong>。</p>
+    </div>
+
+    <div class="card">
+      <h2>Grok Bot 提醒（Baby Stuff chat）</h2>
+      <table>
+        <tr><th>提醒</th><th>時間（HKT）</th><th>性質</th></tr>
+        <tr><td>每月入學・健康待辦</td><td>每月 1 號約 09:00（可前後 30 分）</td><td>常設</td></tr>
+        <tr><td>約 6 個月母嬰針（四合一第 3、乙肝第 3）</td><td>2026-12-01 09:00</td><td>一次過</td></tr>
+        <tr><td>約 12 個月針前提醒</td><td>2027-05-26 09:00</td><td>一次過</td></tr>
+        <tr><td>St Cat Harbour Place PN 報名窗</td><td>2027-08-01 09:00</td><td>一次過</td></tr>
+        <tr><td>約 18 個月針</td><td>約 2027-11-25 09:00（到正確年份先出聲）</td><td>一次過</td></tr>
+        <tr><td>St Cat K1 報名窗</td><td>2028-08-01 09:00</td><td>一次過</td></tr>
+      </table>
+      <p class="muted">提醒只喺 Baby Stuff chat 出；針程以母嬰健康院為準（熱線 2112 9900）。</p>
+    </div>
+
+    <div class="card">
+      <h2>Open day／簡介會（截至 2026-11-05）</h2>
+      <p><strong>之後已公佈公開日期：暫無</strong>（St Cat KT／HP、Victoria prospect open day、Pebbles、學之園下一場）。</p>
+      <table>
+        <tr><th>剛過</th><th>日期</th><th>狀態</th></tr>
+        <tr><td>學之園 Open House（含紅磡昇御海逸）</td><td>2026-10-31</td><td>已完；未公佈下一場</td></tr>
+        <tr><td>Victoria 入學資訊日（金鐘）</td><td>2026-10-22</td><td>已完；暫無下一場</td></tr>
+        <tr><td>何文田浸信會幼稚園親子遊戲日</td><td>2026-10-17</td><td>已完</td></tr>
+      </table>
+      <p class="muted" style="margin-top:12px">仍開但唔啱歲：Victoria PN 2027/28 申請至 2026-12-14；學之園 PN 申請約 2026-12 公佈。</p>
+      <p class="muted">無公開 open day：St Cat／Pebbles — 可電問參觀。Pebbles 2769-1308；Victoria 何文田 2130 3630／2762 9130；St Cat KT 2337 7344；HP PN 2670 6600。</p>
+    </div>
+
+    <div class="card">
+      <h2>入學連結</h2>
+      <ul>
+        <li><a href="https://admission.ekinder.com.hk/stcikg">St Cat 九龍塘申請</a></li>
+        <li><a href="https://admission.ekinder.com.hk/stcikghp">St Cat Harbour Place PN</a></li>
+        <li><a href="https://www.victoria.edu.hk/application-procedure/">Victoria 申請程序</a></li>
+        <li><a href="https://www.learninghabitat.org/zh-hk">學之園官網（並列考慮）</a></li>
+        <li><a href="https://www.learninghabitat.org/zh-hk/admission/online-application">學之園網上申請</a></li>
+        <li><a href="https://www.learninghabitat.org/en/admission/fees">學之園學費</a></li>
+        <li><a href="https://www.pebbles-hk.com/">Pebbles（Harbour Place）</a></li>
+        <li><a href="https://www.fhs.gov.hk/tc_chi/main_ser/child_health/child_health_schedule.html">衞生署幼兒健康時間表</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="panel-health" class="panel" role="tabpanel" aria-labelledby="tab-health">
+    <div class="card card-accent-green">
+      <div class="h2-with-illust">
+        <img class="section-illust" src="assets/bb-health-mist.jpg" alt="" width="84" height="84" />
+        <h2><span class="sec-ico" aria-hidden="true">💉</span>過往參考（出世第1日→而家）</h2>
+      </div>
+      <p class="muted">以下按香港家庭健康服務時間表作<strong>參考</strong>；實際日期以你嘅針卡／母嬰健康院紀錄為準，唔代表每針已打。</p>
+            <ul class="health-timeline" aria-label="針程／生長時間軸">
+        <li class="tl-node done"><span class="tl-label">初生</span></li>
+        <li class="tl-node done"><span class="tl-label">1月</span></li>
+        <li class="tl-node done"><span class="tl-label">2月</span></li>
+        <li class="tl-node done"><span class="tl-label">4月</span></li>
+        <li class="tl-node now"><span class="tl-label">而家<br>5月</span><span class="tl-tag">而家</span></li>
+        <li class="tl-node next"><span class="tl-label">下一站<br>6月</span></li>
+      </ul>
+<table>
+        <tr><th>約歲</th><th>大約時間</th><th>生長／檢查</th><th>計劃內疫苗（參考）</th><th class="vax-done-col vax-site-col">健康院</th><th class="vax-done-col vax-site-col">私家</th></tr>
+        <tr><td>初生／出院前後</td><td>2026-06（第1日起）</td><td>初生體檢；聽力普查（如適用）</td><td>卡介苗；乙肝第1</td>
+          <td class="vax-done-col vax-site-col"><ul class="check-list vax-inline">
+            <li><input type="checkbox" id="vax-bcg-mchc" data-key="bcg-mchc" /><label for="vax-bcg-mchc">卡介苗</label></li>
+            <li><input type="checkbox" id="vax-hepb1-mchc" data-key="hepb1-mchc" /><label for="vax-hepb1-mchc">乙肝第1</label></li>
+          </ul></td>
+          <td class="vax-done-col vax-site-col"><ul class="check-list vax-inline">
+            <li><input type="checkbox" id="vax-bcg-private" data-key="bcg-private" /><label for="vax-bcg-private">卡介苗</label></li>
+            <li><input type="checkbox" id="vax-hepb1-private" data-key="hepb1-private" /><label for="vax-hepb1-private">乙肝第1</label></li>
+          </ul></td></tr>
+        <tr><td>約1個月</td><td>約 2026-07</td><td>生長／飲食評估</td><td>乙肝第2</td>
+          <td class="vax-done-col vax-site-col"><ul class="check-list vax-inline">
+            <li><input type="checkbox" id="vax-hepb2-mchc" data-key="hepb2-mchc" /><label for="vax-hepb2-mchc">乙肝第2</label></li>
+          </ul></td>
+          <td class="vax-done-col vax-site-col"><ul class="check-list vax-inline">
+            <li><input type="checkbox" id="vax-hepb2-private" data-key="hepb2-private" /><label for="vax-hepb2-private">乙肝第2</label></li>
+          </ul></td></tr>
+        <tr><td>約2個月</td><td>約 2026-08</td><td>生長／飲食；發展監察如適用</td><td>四合一第1；肺炎球菌第1</td>
+          <td class="vax-done-col vax-site-col"><ul class="check-list vax-inline">
+            <li><input type="checkbox" id="vax-dtap1-mchc" data-key="dtap1-mchc" /><label for="vax-dtap1-mchc">四合一第1</label></li>
+            <li><input type="checkbox" id="vax-pcv1-mchc" data-key="pcv1-mchc" /><label for="vax-pcv1-mchc">肺炎球菌第1</label></li>
+          </ul></td>
+          <td class="vax-done-col vax-site-col"><ul class="check-list vax-inline">
+            <li><input type="checkbox" id="vax-dtap1-private" data-key="dtap1-private" /><label for="vax-dtap1-private">四合一第1</label></li>
+            <li><input type="checkbox" id="vax-pcv1-private" data-key="pcv1-private" /><label for="vax-pcv1-private">肺炎球菌第1</label></li>
+          </ul></td></tr>
+        <tr><td>約4個月</td><td>約 2026-10</td><td>生長／飲食；有需要可安排發展監察</td><td>四合一第2；肺炎球菌第2</td>
+          <td class="vax-done-col muted">見前瞻表</td><td class="vax-done-col muted">見前瞻表</td></tr>
+        <tr><td>而家約5個月</td><td>2026-11（截至 11-05）</td><td>確認4個月針及生長評估已約／已打</td><td>若未打：補四合一第2、肺炎球菌第2；下一站約6個月</td>
+          <td class="vax-done-col muted">—</td><td class="vax-done-col muted">—</td></tr>
+      </table>
+    </div>
+
+    <div class="card card-accent-green" id="vax-ticks-card">
+      <h2><span class="sec-ico" aria-hidden="true">🗓️</span>母嬰檢查／生長／針程（前瞻）</h2>
+      <p class="muted">來源：衞生署家庭健康服務「幼兒健康及發展綜合計劃」同「香港兒童免疫接種計劃」（2026 年查閱）。實際以你登記母嬰健康院為準。</p>
+      <p class="public-readonly-note" id="vax-public-note" hidden>公開頁只睇唔改；本機 <a href="http://127.0.0.1:8891/#health">http://127.0.0.1:8891/</a>「健康檢查／針程」先可勾選健康院／私家針程。</p>
+      <p class="muted">右邊「健康院／私家」可逐針勾選（同一針可分開記錄）；保存在本機（localStorage）。過往表初生～2個月針亦可勾。以針卡／母嬰健康院為準。</p>
+      <table>
+        <tr><th>年齡</th><th>生長／飲食</th><th>發展監察</th><th>計劃內疫苗</th><th class="vax-done-col vax-site-col">健康院</th><th class="vax-done-col vax-site-col">私家</th></tr>
+        <tr><td>約 4 個月</td><td>有</td><td>有需要可安排</td><td>四合一第 2；肺炎球菌第 2</td>
+          <td class="vax-done-col vax-site-col"><ul class="check-list vax-inline">
+            <li><input type="checkbox" id="vax-dtap2-mchc" data-key="dtap2-mchc" /><label for="vax-dtap2-mchc">四合一第2</label></li>
+            <li><input type="checkbox" id="vax-pcv2-mchc" data-key="pcv2-mchc" /><label for="vax-pcv2-mchc">肺炎球菌第2</label></li>
+          </ul></td>
+          <td class="vax-done-col vax-site-col"><ul class="check-list vax-inline">
+            <li><input type="checkbox" id="vax-dtap2-private" data-key="dtap2-private" /><label for="vax-dtap2-private">四合一第2</label></li>
+            <li><input type="checkbox" id="vax-pcv2-private" data-key="pcv2-private" /><label for="vax-pcv2-private">肺炎球菌第2</label></li>
+          </ul></td></tr>
+        <tr><td>約 6 個月（約 2026-12）</td><td>有</td><td>常規</td><td>四合一第 3；乙肝第 3</td>
+          <td class="vax-done-col vax-site-col"><ul class="check-list vax-inline">
+            <li><input type="checkbox" id="vax-dtap3-mchc" data-key="dtap3-mchc" /><label for="vax-dtap3-mchc">四合一第3</label></li>
+            <li><input type="checkbox" id="vax-hepb3-mchc" data-key="hepb3-mchc" /><label for="vax-hepb3-mchc">乙肝第3</label></li>
+          </ul></td>
+          <td class="vax-done-col vax-site-col"><ul class="check-list vax-inline">
+            <li><input type="checkbox" id="vax-dtap3-private" data-key="dtap3-private" /><label for="vax-dtap3-private">四合一第3</label></li>
+            <li><input type="checkbox" id="vax-hepb3-private" data-key="hepb3-private" /><label for="vax-hepb3-private">乙肝第3</label></li>
+          </ul></td></tr>
+        <tr><td>約 12 個月（約 2027-06）</td><td>有</td><td>常規</td><td>MMR 第 1；肺炎球菌加強；水痘第 1</td>
+          <td class="vax-done-col vax-site-col"><ul class="check-list vax-inline">
+            <li><input type="checkbox" id="vax-mmr1-mchc" data-key="mmr1-mchc" /><label for="vax-mmr1-mchc">MMR第1</label></li>
+            <li><input type="checkbox" id="vax-pcv-booster-mchc" data-key="pcv-booster-mchc" /><label for="vax-pcv-booster-mchc">肺炎球菌加強</label></li>
+            <li><input type="checkbox" id="vax-vzv1-mchc" data-key="vzv1-mchc" /><label for="vax-vzv1-mchc">水痘第1</label></li>
+          </ul></td>
+          <td class="vax-done-col vax-site-col"><ul class="check-list vax-inline">
+            <li><input type="checkbox" id="vax-mmr1-private" data-key="mmr1-private" /><label for="vax-mmr1-private">MMR第1</label></li>
+            <li><input type="checkbox" id="vax-pcv-booster-private" data-key="pcv-booster-private" /><label for="vax-pcv-booster-private">肺炎球菌加強</label></li>
+            <li><input type="checkbox" id="vax-vzv1-private" data-key="vzv1-private" /><label for="vax-vzv1-private">水痘第1</label></li>
+          </ul></td></tr>
+        <tr><td>約 18 個月（約 2027-12）</td><td>有</td><td>常規</td><td>四合一加強；MMRV 第 2</td>
+          <td class="vax-done-col vax-site-col"><ul class="check-list vax-inline">
+            <li><input type="checkbox" id="vax-dtap-booster-mchc" data-key="dtap-booster-mchc" /><label for="vax-dtap-booster-mchc">四合一加強</label></li>
+            <li><input type="checkbox" id="vax-mmrv2-mchc" data-key="mmrv2-mchc" /><label for="vax-mmrv2-mchc">MMRV第2</label></li>
+          </ul></td>
+          <td class="vax-done-col vax-site-col"><ul class="check-list vax-inline">
+            <li><input type="checkbox" id="vax-dtap-booster-private" data-key="dtap-booster-private" /><label for="vax-dtap-booster-private">四合一加強</label></li>
+            <li><input type="checkbox" id="vax-mmrv2-private" data-key="mmrv2-private" /><label for="vax-mmrv2-private">MMRV第2</label></li>
+          </ul></td></tr>
+        <tr><td>約 4 歲</td><td>有</td><td>有需要</td><td>—（學前視力普查）</td><td class="vax-done-col muted">—</td></tr>
+        <tr><td>小一</td><td>學校／家庭醫生</td><td>—</td><td>到校：四合一加強；MMRV 補種如適用</td>
+          <td class="vax-done-col vax-site-col"><ul class="check-list vax-inline">
+            <li><input type="checkbox" id="vax-dtap-p1-mchc" data-key="dtap-p1-mchc" /><label for="vax-dtap-p1-mchc">四合一加強（到校）</label></li>
+            <li><input type="checkbox" id="vax-mmrv-p1-mchc" data-key="mmrv-p1-mchc" /><label for="vax-mmrv-p1-mchc">MMRV補種</label></li>
+          </ul></td>
+          <td class="vax-done-col vax-site-col"><ul class="check-list vax-inline">
+            <li><input type="checkbox" id="vax-dtap-p1-private" data-key="dtap-p1-private" /><label for="vax-dtap-p1-private">四合一加強（到校）</label></li>
+            <li><input type="checkbox" id="vax-mmrv-p1-private" data-key="mmrv-p1-private" /><label for="vax-mmrv-p1-private">MMRV補種</label></li>
+          </ul></td></tr>
+      </table>
+      <button type="button" class="btn-clear" id="vax-ticks-clear">全部清除針程勾選</button>
+    </div>
+
+    <div class="card">
+      <h2>注意</h2>
+      <ul>
+        <li>聽力普查主要畀 4 個月以下；4 歲起有學前視力普查。</li>
+        <li>私家額外疫苗（流感、輪狀、甲肝等）請同家庭醫生商量。</li>
+        <li>初生／1／2 個月針若未完成，跟母嬰補齊。</li>
+        <li>唔好自己改針期；資訊熱線 <strong>2112 9900</strong>。</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>每次點做</h2>
+      <ol class="steps">
+        <li><strong>約母嬰健康院</strong> — 兒童服務要預約；可親臨或致電你登記嘅院。</li>
+        <li><strong>帶齊針卡同出世紙</strong> — 每次接種後核對紀錄；建議登記醫健通方便查。</li>
+        <li><strong>睇生長曲線</strong> — 跟住百分位趨勢；急升急跌先要問醫生。</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h2>參考</h2>
+      <ul>
+        <li><a href="https://www.fhs.gov.hk/tc_chi/main_ser/child_health/child_health_schedule.html">幼兒健康及發展時間表（FHS）</a></li>
+        <li><a href="https://www.fhs.gov.hk/tc_chi/main_ser/child_health/child_health_recommend.html">香港兒童免疫接種計劃</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="panel-study" class="panel" role="tabpanel" aria-labelledby="tab-study">
+    <div class="card card-accent">
+      <div class="h2-with-illust">
+        <img class="section-illust" src="assets/bb-school-mist.jpg" alt="" width="84" height="84" />
+        <h2><span class="sec-ico" aria-hidden="true">🛤️</span>升學主線時間表</h2>
+      </div>
+      <div class="path-flow" aria-label="升學階段流程">
+        <div class="path-chip"><span class="path-name">Playgroup</span><span class="path-year">約2027</span></div>
+        <span class="path-arrow" aria-hidden="true">→</span>
+        <div class="path-fork" aria-label="幼稚園並列選擇">
+          <span class="path-fork-label">幼稚園並列</span>
+          <div class="path-chip path-main"><span class="path-name">St Cat</span><span class="path-year">主線考慮</span></div>
+          <div class="path-chip path-alt"><span class="path-name">學之園</span><span class="path-year">昇御海逸／紅磡</span></div>
+        </div>
+        <span class="path-arrow" aria-hidden="true">→</span>
+        <div class="path-chip"><span class="path-name">DBSPD</span><span class="path-year">約2032</span></div>
+        <span class="path-arrow" aria-hidden="true">→</span>
+        <div class="path-chip"><span class="path-name">DBS</span><span class="path-year">約2038</span></div>
+      </div>
+      <p class="muted lead">幼稚園目標：St Cat（主線考慮）＋學之園（並列；昇御海逸／紅磡）→ DBSPD → DBS；高中可揀 DSE 或 IBDP。</p>
+      <table>
+        <tr><th>階段</th><th>大約時間</th><th>做咩</th></tr>
+        <tr><td>Playgroup（如 Pebbles）</td><td>而家～2027</td><td>早啲查輪候；建立社交同語言（費用彈性大，未計入路徑總額）</td></tr>
+        <tr><td>幼稚園並列：St Cat PN（Harbour Place）</td><td>約 2028 年 9 月入；報名約 2027 年 9 月</td><td>紅磡，較近；主線考慮之一</td></tr>
+        <tr><td>幼稚園並列：學之園（昇御海逸等）</td><td>約 2028–2031（以校方當年為準）</td><td>紅磡較近；學費見「主要年費」；同 St Cat 一齊跟</td></tr>
+        <tr><td>St Cat K1–K3 九龍塘（若走 St Cat）</td><td>約 2029–2031</td><td>面試約取錄年前 11 月；之後升小準備</td></tr>
+        <tr><td>DBSPD 小一→小六</td><td>約 2032–2038</td><td>申請窗極短；一條龍目標上 DBS；幼稚園無論 St Cat／學之園都可申</td></tr>
+        <tr><td>DBS 中學</td><td>約 2038–2044</td><td>本地 DSE，或 G10 Bridging → IBDP（G11–G12）</td></tr>
+        <tr><td>大學</td><td>約 2044–2047</td><td>本地 UGC 資助；或海外（另計）</td></tr>
+        <tr><td>（對照）ESF 線</td><td>KG→Y13→大學</td><td>全日國際；學費見預算 B</td></tr>
+      </table>
+      <p class="muted">St Cat 同 DBSPD 都唔係政府統一派位；每一步獨立申請。St Cat 畢業生升 DBSPD 有口碑但無保證。幼稚園走學之園之後仍可申 DBSPD。DBSPD 全英語，日常英語自然表達比操練習卷重要。</p>
+    </div>
+
+    <div class="card">
+      <h2>路徑揀法（A1／A2／B）</h2>
+      <ul>
+        <li><strong>A1</strong>：幼稚園（St Cat 或學之園）→ DBSPD → DBS 本地 NSS／DSE → 本地資助大學（學費最低主線）</li>
+        <li><strong>A2</strong>：同上，高中轉 DBS IBDP（中學段明顯貴啲）</li>
+        <li><strong>B</strong>：ESF 標準校全程國際 IB（對照；非 Discovery／Renaissance）</li>
+      </ul>
+      <p class="muted">一句：繼續直資線，就算高中讀 IB，今日價累計學費都遠低於全日 ESF。</p>
+    </div>
+
+    <div class="card">
+      <h2>而家可以做</h2>
+      <ul>
+        <li>查 Pebbles／何文田附近 playgroup 輪候</li>
+        <li>備私人電郵 + 出世紙／針卡電子檔</li>
+        <li>Bookmark St Cat、學之園同 DBSPD 入學頁</li>
+        <li>決定英粵 vs 英普方向（可稍後）</li>
+        <li>用學費摘要估家庭現金流（直資 vs 國際）</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>入學連結</h2>
+      <ul>
+        <li><a href="https://admission.ekinder.com.hk/stcikg">St Cat K1 網上報名</a></li>
+        <li><a href="https://admission.ekinder.com.hk/stcikghp">St Cat Harbour Place PN</a></li>
+        <li><a href="https://www.learninghabitat.org/zh-hk">學之園（並列考慮）</a></li>
+        <li><a href="https://www.learninghabitat.org/zh-hk/admission/online-application">學之園網上申請</a></li>
+        <li><a href="https://www.learninghabitat.org/en/admission/fees">學之園學費</a></li>
+        <li><a href="https://www.dbspd.edu.hk/index.php/g1-admission">DBSPD 小一入學</a></li>
+        <li><a href="https://www.dbspd.edu.hk/node/416">DBSPD／DBS 2026-27 學費</a></li>
+        <li><a href="https://join-us.esf.edu.hk/school-fees/">ESF 學費</a></li>
+        <li><a href="https://www.pebbles-hk.com/">Pebbles</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="panel-growth" class="panel" role="tabpanel" aria-labelledby="tab-growth">
+    <div class="card card-accent">
+      <div class="h2-with-illust">
+        <img class="section-illust" src="assets/bb-diary-mist.jpg" alt="" width="84" height="84" />
+        <h2><span class="sec-ico" aria-hidden="true">🌱</span>基線</h2>
+      </div>
+      <p>出世 <strong>2026-06-09</strong>（男）。而家約 <strong>5 個月</strong>（截至 2026-11-05）。參考重點，唔係考試清單。</p>
+            <ul class="age-timeline" aria-label="發展月齡時間軸">
+        <li class="tl-node done"><span class="tl-label">初生</span></li>
+        <li class="tl-node done"><span class="tl-label">1–4</span></li>
+        <li class="tl-node now"><span class="tl-label">而家<br>5月</span><span class="tl-tag">而家</span></li>
+        <li class="tl-node next"><span class="tl-label">6月</span></li>
+        <li class="tl-node next"><span class="tl-label">8月</span></li>
+        <li class="tl-node next"><span class="tl-label">10月</span></li>
+        <li class="tl-node next"><span class="tl-label">約1歲<br>12月</span></li>
+      </ul>
+<p class="muted">體重／身長／頭圍詳細說明同曲線參考亦見上方 <a href="https://cursor.com/canvas/store-973ed5c5-1e91-47a1-8b33-74db70fe5830/0a1910af-d71b-4d0f-b46a-4782216825a0">詳細 Page</a>；呢度用成長日記即時輸入。</p>
+    </div>
+
+    <div class="card card-accent" id="growth-diary-card">
+      <h2><span class="sec-ico" aria-hidden="true">📏</span>成長日記（可輸入）</h2>
+      <p class="public-readonly-note" id="diary-public-note" hidden>公開頁只睇唔改；本機 <a href="http://127.0.0.1:8891/#growth">http://127.0.0.1:8891/</a>「成長發展」先可輸入成長日記。</p>
+      <p class="muted">保存在本機瀏覽器（localStorage），唔會上傳。以母嬰／針卡為準；跟百分位趨勢，唔使同人仔比。</p>
+
+      <form id="growth-diary-form" class="diary-form" autocomplete="off">
+        <label>量度日期
+          <input type="date" id="diary-date" name="date" required />
+        </label>
+        <label>體重 kg
+          <input type="number" id="diary-weight" name="weightKg" step="0.01" min="0" inputmode="decimal" placeholder="例如 7.20" />
+        </label>
+        <label>身長 cm
+          <input type="number" id="diary-length" name="lengthCm" step="0.1" min="0" inputmode="decimal" placeholder="例如 65.0" />
+        </label>
+        <label>頭圍 cm
+          <input type="number" id="diary-head" name="headCm" step="0.1" min="0" inputmode="decimal" placeholder="例如 42.0" />
+        </label>
+        <label>地點／來源
+          <select id="diary-source" name="source">
+            <option value="母嬰健康院">母嬰健康院</option>
+            <option value="家">家</option>
+            <option value="私家診所">私家診所</option>
+            <option value="其他">其他</option>
+          </select>
+        </label>
+        <label class="span-all">備註（可選）
+          <textarea id="diary-note" name="note" rows="2" placeholder="例如：哭緊量度／跟上次差唔多"></textarea>
+        </label>
+      </form>
+
+      <div class="diary-actions">
+        <button type="submit" form="growth-diary-form" class="btn-primary" id="diary-add">加入紀錄</button>
+        <button type="button" class="btn-clear" id="diary-export">匯出 JSON</button>
+        <button type="button" class="btn-clear" id="diary-clear-all">清除全部</button>
+      </div>
+
+      <p class="diary-latest muted" id="diary-latest">未有紀錄。</p>
+
+      <div class="diary-table-wrap">
+        <table id="diary-table" hidden>
+          <thead>
+            <tr>
+              <th>日期</th>
+              <th>約月齡</th>
+              <th class="num">體重(kg)</th>
+              <th class="num">身長(cm)</th>
+              <th class="num">頭圍(cm)</th>
+              <th>來源</th>
+              <th>備註</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="diary-tbody"></tbody>
+        </table>
+        <p class="diary-empty" id="diary-empty">未有成長紀錄 — 加一筆體重／身長／頭圍先。</p>
+      </div>
+    </div>
+
+    <div class="card card-accent-amber" id="growth-achievements-card">
+          <h2><span class="sec-ico" aria-hidden="true">⭐</span>發展成就計劃（可勾選・至約1歲）</h2>
+          <p class="public-readonly-note" id="achievements-public-note" hidden>公開頁只睇唔改；本機 <a href="http://127.0.0.1:8891/#growth">http://127.0.0.1:8891/</a>「成長發展」先可勾選發展成就。</p>
+
+          <p class="muted">勾選保存在本機（localStorage）；以母嬰為準。</p>
+          <p class="muted">按月齡<strong>前瞻至約12個月／1歲</strong>：括號／旁註＝多數寶寶做到都正常嘅大約月齡（參考），唔係考試線。BB 而家約5個月；6–12個月係前瞻計劃，做到先勾。</p>
+
+          <div class="check-group">
+            <h3>初生／出院前後（2026-06 第1日起）— 發展計劃</h3>
+            <p class="plan-sub">發展重點：反射、餵食同睡眠、結絆；頭部控制弱。此階段無可勾選細項，見下方過往參考表。</p>
+          </div>
+
+          <div class="check-group">
+            <h3>約1個月（約2026-07）— 發展計劃</h3>
+            <p class="plan-sub">發展重點：短暫追視面孔；趴地可微微抬頭。相關進度可喺約2–3個月項勾選。</p>
+          </div>
+
+          <div class="check-group">
+            <h3>約2個月（約2026-08）— 發展計劃</h3>
+            <p class="plan-sub">發展重點：社交笑、發聲（cooing）、追視物件；頭部控制進步</p>
+            <ul class="check-list">
+              <li><input type="checkbox" id="ach-social-smile" data-key="social-smile" /><label for="ach-social-smile">對人笑<span class="check-age">發展計劃：約1.5–3個月／約2026-07–09</span></label></li>
+              <li><input type="checkbox" id="ach-cooing-babble" data-key="cooing-babble" /><label for="ach-cooing-babble">發聲／咿呀（cooing／babble）<span class="pill-now">而家常見</span><span class="check-age">發展計劃：cooing 約2個月；babble 約4–6個月／約2026-08 起</span></label></li>
+              <li><input type="checkbox" id="ach-track-objects" data-key="track-objects" /><label for="ach-track-objects">追視移動物件<span class="check-age">發展計劃：約2–3個月起穩／約2026-08–09</span></label></li>
+              <li><input type="checkbox" id="ach-respond-speech" data-key="respond-speech" /><label for="ach-respond-speech">對說話有反應<span class="check-age">發展計劃：約2–4個月／約2026-08–10</span></label></li>
+            </ul>
+          </div>
+
+          <div class="check-group">
+            <h3>約3個月（約2026-09）— 發展計劃</h3>
+            <p class="plan-sub">發展重點：伸手抓玩具、趴地時間變長、笑聲出現；可能開始側身</p>
+            <ul class="check-list">
+              <li><input type="checkbox" id="ach-tummy-chest" data-key="tummy-chest" /><label for="ach-tummy-chest">趴地時可抬起胸口或用手肘撐起<span class="check-age">發展計劃：約2–4個月／約2026-08–10</span></label></li>
+              <li><input type="checkbox" id="ach-head-steady" data-key="head-steady" /><label for="ach-head-steady">直立時頭部較穩<span class="check-age">發展計劃：約3–4個月／約2026-09–10</span></label></li>
+              <li class="now-typical"><input type="checkbox" id="ach-reach-grasp" data-key="reach-grasp" /><label for="ach-reach-grasp">主動伸手抓玩具<span class="pill-now">而家常見</span><span class="check-age">發展計劃：約3–5個月／約2026-09–11</span></label></li>
+              <li class="now-typical"><input type="checkbox" id="ach-hands-together" data-key="hands-together" /><label for="ach-hands-together">雙手互玩／對掌<span class="pill-now">而家常見</span><span class="check-age">發展計劃：約3–5個月／約2026-09–11</span></label></li>
+              <li><input type="checkbox" id="ach-laughter" data-key="laughter" /><label for="ach-laughter">有笑聲<span class="check-age">發展計劃：約3–4個月／約2026-09–10</span></label></li>
+              <li><input type="checkbox" id="ach-turn-to-sound" data-key="turn-to-sound" /><label for="ach-turn-to-sound">聽到聲會轉頭<span class="check-age">發展計劃：約3–4個月／約2026-09–10</span></label></li>
+            </ul>
+          </div>
+
+          <div class="check-group">
+            <h3>約4個月（約2026-10）— 發展計劃</h3>
+            <p class="plan-sub">發展重點：大笑、主動伸手抓物、語聲增多；可能開始翻身</p>
+            <ul class="check-list">
+              <li class="now-typical"><input type="checkbox" id="ach-hand-to-mouth" data-key="hand-to-mouth" /><label for="ach-hand-to-mouth">用手抓物放入口<span class="pill-now">而家常見</span><span class="check-age">發展計劃：約4–6個月／約2026-10–12</span></label></li>
+              <li class="now-typical"><input type="checkbox" id="ach-roll-side" data-key="roll-side" /><label for="ach-roll-side">開始側身／翻身（未做到可唔勾）<span class="pill-now">而家常見</span><span class="check-age">發展計劃：俯→仰約3–5；仰→俯約5–7個月／約2026-09–2027-01</span></label></li>
+            </ul>
+          </div>
+
+          <div class="check-group">
+            <h3>而家約5個月（2026-11）— 發展計劃</h3>
+            <p class="plan-sub">發展重點：追視、對人笑、開始發聲；頭部控制進步；可能開始認生。以下係而家仍常見／4–6個月窗。</p>
+            <ul class="check-list">
+              <li class="now-typical"><input type="checkbox" id="ach-sit-supported" data-key="sit-supported" /><label for="ach-sit-supported">可短暫坐（需扶持）<span class="pill-now">而家常見</span><span class="check-age">發展計劃：約4–6個月／約2026-10–12</span></label></li>
+              <li class="now-typical"><input type="checkbox" id="ach-recognize-caregiver" data-key="recognize-caregiver" /><label for="ach-recognize-caregiver">認出熟悉照顧者<span class="pill-now">而家常見</span><span class="check-age">發展計劃：約4–6個月／約2026-10–12（可能開始認生）</span></label></li>
+            </ul>
+          </div>
+
+
+          <div class="check-group">
+            <h3>約6個月（約2026-12）— 發展計劃</h3>
+            <p class="plan-sub">發展重點：坐得較穩、雙手傳物、對固體食物有興趣；語聲／babble 增多。配合約6個月針。</p>
+            <ul class="check-list">
+              <li><input type="checkbox" id="ach-sit-steady" data-key="sit-steady" /><label for="ach-sit-steady">可獨立坐較穩（短暫唔使扶）<span class="check-age">發展計劃：約6–8個月／約2026-12–2027-02</span></label></li>
+              <li><input type="checkbox" id="ach-pass-object" data-key="pass-object" /><label for="ach-pass-object">雙手互相傳玩具<span class="check-age">發展計劃：約5–7個月／約2026-11–2027-01</span></label></li>
+              <li><input type="checkbox" id="ach-roll-both" data-key="roll-both" /><label for="ach-roll-both">仰臥↔俯臥翻身都做到<span class="check-age">發展計劃：約5–7個月／約2026-11–2027-01</span></label></li>
+              <li><input type="checkbox" id="ach-babble-syllables" data-key="babble-syllables" /><label for="ach-babble-syllables">重複音節 babble（ba／da／ma）<span class="check-age">發展計劃：約6–9個月／約2026-12–2027-03</span></label></li>
+              <li><input type="checkbox" id="ach-solids-interest" data-key="solids-interest" /><label for="ach-solids-interest">對糊仔／固體食物有興趣（跟母嬰／醫生節奏）<span class="check-age">發展計劃：約6個月起／約2026-12</span></label></li>
+            </ul>
+          </div>
+
+          <div class="check-group">
+            <h3>約7個月（約2027-01）— 發展計劃</h3>
+            <p class="plan-sub">發展重點：坐穩、開始打轉／爬、對自己名字有反應；抓握更準。</p>
+            <ul class="check-list">
+              <li><input type="checkbox" id="ach-sit-unsupported" data-key="sit-unsupported" /><label for="ach-sit-unsupported">坐穩，雙手可自由玩<span class="check-age">發展計劃：約6–8個月／約2026-12–2027-02</span></label></li>
+              <li><input type="checkbox" id="ach-pivot-crawl" data-key="pivot-crawl" /><label for="ach-pivot-crawl">趴地打轉／開始向前挪移<span class="check-age">發展計劃：約7–9個月／約2027-01–03</span></label></li>
+              <li><input type="checkbox" id="ach-name-response" data-key="name-response" /><label for="ach-name-response">聽到自己名字會轉頭／停一停<span class="check-age">發展計劃：約6–9個月／約2026-12–2027-03</span></label></li>
+              <li><input type="checkbox" id="ach-raking-grasp" data-key="raking-grasp" /><label for="ach-raking-grasp">用整隻手耙細物（raking grasp）<span class="check-age">發展計劃：約6–8個月／約2026-12–2027-02</span></label></li>
+            </ul>
+          </div>
+
+          <div class="check-group">
+            <h3>約8個月（約2027-02）— 發展計劃</h3>
+            <p class="plan-sub">發展重點：爬行／扶物跪站、怕生更明顯、物件恆存（搵藏起嘅玩具）。</p>
+            <ul class="check-list">
+              <li><input type="checkbox" id="ach-crawl" data-key="crawl" /><label for="ach-crawl">會爬或用其他方式移動（打滾／腳撐都行）<span class="check-age">發展計劃：約7–10個月／約2027-01–04</span></label></li>
+              <li><input type="checkbox" id="ach-pull-to-stand" data-key="pull-to-stand" /><label for="ach-pull-to-stand">扶傢俬拉自己企起<span class="check-age">發展計劃：約8–10個月／約2027-02–04</span></label></li>
+              <li><input type="checkbox" id="ach-stranger-anxiety" data-key="stranger-anxiety" /><label for="ach-stranger-anxiety">對陌生人較警覺／黏熟悉照顧者<span class="check-age">發展計劃：約7–10個月／約2027-01–04</span></label></li>
+              <li><input type="checkbox" id="ach-object-permanence" data-key="object-permanence" /><label for="ach-object-permanence">會搵被布遮住嘅玩具<span class="check-age">發展計劃：約8–10個月／約2027-02–04</span></label></li>
+              <li><input type="checkbox" id="ach-clap-wave" data-key="clap-wave" /><label for="ach-clap-wave">開始拍手或揮手<span class="check-age">發展計劃：約8–11個月／約2027-02–05</span></label></li>
+            </ul>
+          </div>
+
+          <div class="check-group">
+            <h3>約9個月（約2027-03）— 發展計劃</h3>
+            <p class="plan-sub">發展重點：扶走（cruising）、拇指食指拈物、明白簡單「唔好」、模仿動作。</p>
+            <ul class="check-list">
+              <li><input type="checkbox" id="ach-cruise" data-key="cruise" /><label for="ach-cruise">扶傢俬橫走（cruising）<span class="check-age">發展計劃：約9–12個月／約2027-03–06</span></label></li>
+              <li><input type="checkbox" id="ach-pincer" data-key="pincer" /><label for="ach-pincer">用拇指＋食指拈細物（pincer）<span class="check-age">發展計劃：約9–12個月／約2027-03–06</span></label></li>
+              <li><input type="checkbox" id="ach-understand-no" data-key="understand-no" /><label for="ach-understand-no">聽到「唔好」會停一停／有反應<span class="check-age">發展計劃：約9–12個月／約2027-03–06</span></label></li>
+              <li><input type="checkbox" id="ach-imitate" data-key="imitate" /><label for="ach-imitate">模仿簡單動作或聲音<span class="check-age">發展計劃：約9–12個月／約2027-03–06</span></label></li>
+            </ul>
+          </div>
+
+          <div class="check-group">
+            <h3>約10個月（約2027-04）— 發展計劃</h3>
+            <p class="plan-sub">發展重點：扶站更穩、用手指指物、手指食物／自己拿杯；幾個有意義音節。</p>
+            <ul class="check-list">
+              <li><input type="checkbox" id="ach-stand-holding" data-key="stand-holding" /><label for="ach-stand-holding">扶物企穩較耐<span class="check-age">發展計劃：約9–12個月／約2027-03–06</span></label></li>
+              <li><input type="checkbox" id="ach-point" data-key="point" /><label for="ach-point">用手指指想要嘅嘢<span class="check-age">發展計劃：約10–14個月／約2027-04–08</span></label></li>
+              <li><input type="checkbox" id="ach-finger-foods" data-key="finger-foods" /><label for="ach-finger-foods">自己拿手指食物放入口<span class="check-age">發展計劃：約9–12個月／約2027-03–06</span></label></li>
+              <li><input type="checkbox" id="ach-meaningful-sounds" data-key="meaningful-sounds" /><label for="ach-meaningful-sounds">有幾個較固定音節／呼喚聲<span class="check-age">發展計劃：約10–12個月／約2027-04–06</span></label></li>
+            </ul>
+          </div>
+
+          <div class="check-group">
+            <h3>約11個月（約2027-05）— 發展計劃</h3>
+            <p class="plan-sub">發展重點：可能獨步幾步、有意叫爸／媽、簡單手勢（再見）；跟一句簡單指示。</p>
+            <ul class="check-list">
+              <li><input type="checkbox" id="ach-first-steps" data-key="first-steps" /><label for="ach-first-steps">獨步幾步或幾乎要行（未做到可唔勾）<span class="check-age">發展計劃：約11–15個月／約2027-05–09</span></label></li>
+              <li><input type="checkbox" id="ach-mama-dada" data-key="mama-dada" /><label for="ach-mama-dada">有意叫「爸／媽」（唔係亂叫）<span class="check-age">發展計劃：約10–14個月／約2027-04–08</span></label></li>
+              <li><input type="checkbox" id="ach-bye-gesture" data-key="bye-gesture" /><label for="ach-bye-gesture">揮手再見或其他手勢<span class="check-age">發展計劃：約10–14個月／約2027-04–08</span></label></li>
+              <li><input type="checkbox" id="ach-simple-command" data-key="simple-command" /><label for="ach-simple-command">跟一句簡單指示（例如「俾我」）<span class="check-age">發展計劃：約11–14個月／約2027-05–08</span></label></li>
+            </ul>
+          </div>
+
+          <div class="check-group">
+            <h3>約12個月／約1歲（約2027-06）— 發展計劃</h3>
+            <p class="plan-sub">發展重點：扶走／獨立坐穩或開始獨步；叫爸媽；用手勢溝通；主動探索。配合約12個月針。</p>
+            <ul class="check-list">
+              <li><input type="checkbox" id="ach-walk-hold-or-alone" data-key="walk-hold-or-alone" /><label for="ach-walk-hold-or-alone">扶走穩陣，或開始獨步<span class="check-age">發展計劃：約12–15個月／約2027-06–09</span></label></li>
+              <li><input type="checkbox" id="ach-say-mama-dada" data-key="say-mama-dada" /><label for="ach-say-mama-dada">清楚叫爸／媽（或常用稱呼）<span class="check-age">發展計劃：約12–15個月／約2027-06–09</span></label></li>
+              <li><input type="checkbox" id="ach-gesture-communicate" data-key="gesture-communicate" /><label for="ach-gesture-communicate">用手勢表達需要（指、俾、再見）<span class="check-age">發展計劃：約12–15個月／約2027-06–09</span></label></li>
+              <li><input type="checkbox" id="ach-explore-actively" data-key="explore-actively" /><label for="ach-explore-actively">主動探索環境（拉開櫃門／執東執西）<span class="check-age">發展計劃：約12–15個月／約2027-06–09</span></label></li>
+              <li><input type="checkbox" id="ach-help-dress" data-key="help-dress" /><label for="ach-help-dress">穿衣服時伸出手腳幫手<span class="check-age">發展計劃：約12–18個月／約2027-06–12</span></label></li>
+            </ul>
+          </div>
+
+
+          <button type="button" class="btn-clear" id="growth-achievements-clear">全部清除</button>
+        </div>
+
+    <div class="card">
+      <h2>發展參考（出世→約1歲）</h2>
+      <table>
+        <tr><th>約歲</th><th>大約時間</th><th>發展重點（參考）</th><th>家長小提示</th></tr>
+        <tr><td>初生／出院前後</td><td>2026-06（第1日起）</td><td>反射、餵食同睡眠建立、與照顧者結絆；頭部控制弱</td><td>跟針卡確認 卡介苗、乙肝第1；聽力普查如適用</td></tr>
+        <tr><td>約1個月</td><td>約 2026-07</td><td>短暫追視面孔；趴地可微微抬頭；驚跳反射減少</td><td>短時間趴地玩；確認乙肝第2</td></tr>
+        <tr><td>約2個月</td><td>約 2026-08</td><td>社交笑、發聲（cooing）、追視物件；頭部控制進步</td><td>對眼傾偈、多對話；確認四合一第1、肺炎球菌第1</td></tr>
+        <tr><td>約3個月</td><td>約 2026-09</td><td>伸手抓玩具、趴地時間變長、笑聲出現；可能開始側身</td><td>提供安全抓握玩具；繼續趴地</td></tr>
+        <tr><td>約4個月</td><td>約 2026-10</td><td>大笑、主動伸手抓物、語聲增多；可能開始翻身</td><td>確認四合一第2、肺炎球菌第2及生長評估</td></tr>
+        <tr><td>而家約5個月</td><td>2026-11（截至 11-05）</td><td>追視、對人笑、開始發聲；頭部控制進步；可能開始認生</td><td>繼續趴地；準備約6個月針（約 2026-12）</td></tr>
+        <tr><td>約6個月</td><td>約 2026-12</td><td>坐得較穩、雙手傳物、babble 增多；對固體食物有興趣</td><td>約6個月針（四合一第3、乙肝第3）；安全進食環境</td></tr>
+        <tr><td>約7個月</td><td>約 2027-01</td><td>坐穩、打轉／開始爬、對名字有反應</td><td>地板安全區；多叫名字玩捉迷藏</td></tr>
+        <tr><td>約8個月</td><td>約 2027-02</td><td>爬行／扶企、怕生、搵藏起玩具</td><td>傢俬防撞；持續共讀同對話</td></tr>
+        <tr><td>約9個月</td><td>約 2027-03</td><td>扶走、拇指食指拈物、明白「唔好」、模仿</td><td>細物防噎；清楚簡單指示</td></tr>
+        <tr><td>約10個月</td><td>約 2027-04</td><td>扶站穩、手指指物、手指食物；有意義音節</td><td>鼓勵手指食物；回應指物溝通</td></tr>
+        <tr><td>約11個月</td><td>約 2027-05</td><td>可能獨步幾步、有意叫爸媽、揮手再見</td><td>安全步行空間；約12個月針前提醒</td></tr>
+        <tr><td>約12個月／約1歲</td><td>約 2027-06</td><td>扶走／獨步起步；叫爸媽；手勢溝通；主動探索</td><td>約12個月針（MMR、肺炎球菌加強、水痘）；多共讀</td></tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>按年齡發展重點</h2>
+      <table>
+        <tr><th>約歲</th><th>時間</th><th>發展重點</th><th>家長小提示</th></tr>
+        <tr><td>而家 ~5 個月</td><td>約 2026-11</td><td>追視、對人笑、開始發聲；頭部控制進步；可能開始認生</td><td>對眼傾偈、趴地玩（tummy time）；跟母嬰約針</td></tr>
+        <tr><td>~6 個月</td><td>約 2026-12</td><td>坐得較穩、雙手傳物、babble；對固體食物有興趣</td><td>約6個月針；安全進食</td></tr>
+        <tr><td>~7 個月</td><td>約 2027-01</td><td>坐穩、打轉／爬、對名字有反應</td><td>地板安全區；多叫名字</td></tr>
+        <tr><td>~8 個月</td><td>約 2027-02</td><td>爬行／扶企、怕生、物件恆存</td><td>防撞；共讀對話</td></tr>
+        <tr><td>~9 個月</td><td>約 2027-03</td><td>扶走、拈細物、明白「唔好」、模仿</td><td>防噎；簡單指示</td></tr>
+        <tr><td>~10 個月</td><td>約 2027-04</td><td>扶站、指物、手指食物；有意義音節</td><td>鼓勵手指食物</td></tr>
+        <tr><td>~11 個月</td><td>約 2027-05</td><td>可能獨步、有意叫爸媽、揮手再見</td><td>安全步行空間</td></tr>
+        <tr><td>~1 歲（12 個月）</td><td>約 2027-06</td><td>扶走／獨步起步；叫爸媽；手勢溝通；主動探索</td><td>約12個月針；多共讀繪本（中英）；練習短暫分開</td></tr>
+        <tr><td>~2 歲</td><td>約 2028-06</td><td>跑跳、短句、模仿、自我意識強；情緒起伏正常</td><td>自理：洗手、執玩具；社交遊戲多過操練</td></tr>
+        <tr><td>~3 歲</td><td>約 2029-06</td><td>短句對話、跟指示、同齡玩耍、自理進步</td><td>面試：小組遊戲 + 老師短談，唔使狂做練習紙</td></tr>
+        <tr><td>~4 歲（K2）</td><td>約 2030-06</td><td>故事理解、問點解、小肌肉（畫／剪）、群體規則</td><td>英語以日常對話同共讀為主；建立簡單興趣</td></tr>
+        <tr><td>~5 歲（K3）</td><td>約 2031-06</td><td>專注稍長、合作遊戲、表達感受、自理穩陣</td><td>模擬陌生環境用英語溝通；保持睡眠同戶外</td></tr>
+        <tr><td>~6 歲／小一</td><td>約 2032-06–09</td><td>適應全日制、群體規矩、獨立完成小任務</td><td>提前 bookmark DBSPD；備 1–2 間後備</td></tr>
+        <tr><td>~7 歲／小二</td><td>約 2033</td><td>讀寫基礎、朋友關係、課外興趣深化</td><td>平衡學業同休息；持續英語閱讀</td></tr>
+        <tr><td>小學 P3–P6</td><td>約 2034–2038</td><td>抽象思維起步、同儕認同、興趣專長更清晰</td><td>興趣班揀精唔揀多；輕量談升中／IB vs DSE</td></tr>
+        <tr><td>中學</td><td>約 2038–2044</td><td>身份探索、自主、壓力管理同長遠目標</td><td>中三／G10 前決定 DSE vs IB</td></tr>
+        <tr><td>大學</td><td>約 2044–2047</td><td>獨立生活、專業探索、財務同時間管理</td><td>本地資助 vs 海外費用差好遠</td></tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>而家日常</h2>
+      <ul>
+        <li>跟母嬰預約，唔好自己改針期</li>
+        <li>日常對眼傾偈、趴地玩（tummy time）</li>
+        <li>準備私人電郵同文件電子檔（出世紙、針卡）</li>
+      </ul>
+      <p class="muted">更細嘅分段同學費現金流見上方詳細 Page。</p>
+    </div>
+  </section>
+
+  <script>
+
+    (function () {
+      function isPrivateHost() {
+        var h = (location.hostname || "").toLowerCase();
+        if (h === "127.0.0.1" || h === "localhost" || h === "::1") return true;
+        if (h === "m2-mac-mini" || h === "m2-mac-mini.local") return true;
+        if (h.indexOf("m2-mac-mini") === 0) return true;
+        if (/\.local$/.test(h)) return true;
+        return false;
+      }
+      window.__babyStuffIsPrivateHost = isPrivateHost;
+      window.__babyStuffApplyPublicReadonly = function () {
+        if (isPrivateHost()) return false;
+        document.documentElement.classList.add("is-public-readonly");
+        var dn = document.getElementById("diary-public-note");
+        var an = document.getElementById("achievements-public-note");
+        var vn = document.getElementById("vax-public-note");
+        if (dn) dn.hidden = false;
+        if (an) an.hidden = false;
+        if (vn) vn.hidden = false;
+        return true;
+      };
+    })();
+
+    (function () {
+      var KEY = "baby-stuff-theme-v1";
+      var root = document.documentElement;
+      var btnMist = document.getElementById("theme-btn-mist");
+      var btnWh = document.getElementById("theme-btn-wanghei");
+      function apply(theme) {
+        if (theme !== "mist" && theme !== "wanghei") theme = "wanghei";
+        root.classList.remove("theme-mist", "theme-wanghei");
+        root.classList.add("theme-" + theme);
+        if (btnMist) btnMist.setAttribute("aria-pressed", theme === "mist" ? "true" : "false");
+        if (btnWh) btnWh.setAttribute("aria-pressed", theme === "wanghei" ? "true" : "false");
+        try { localStorage.setItem(KEY, theme); } catch (e) {}
+      }
+      var saved = null;
+      try { saved = localStorage.getItem(KEY); } catch (e) {}
+      apply(saved || "wanghei");
+      if (btnMist) btnMist.addEventListener("click", function () { apply("mist"); });
+      if (btnWh) btnWh.addEventListener("click", function () { apply("wanghei"); });
+    })();
+
+    (function () {
+      var tabs = document.querySelectorAll(".tabs [role=tab]");
+      var names = ["summary", "watch", "health", "study", "growth"];
+      var panels = {};
+      names.forEach(function (n) { panels[n] = document.getElementById("panel-" + n); });
+      function activate(name) {
+        if (!panels[name]) name = "summary";
+        tabs.forEach(function (btn) {
+          var on = btn.getAttribute("data-tab") === name;
+          btn.setAttribute("aria-selected", on ? "true" : "false");
+        });
+        names.forEach(function (key) {
+          panels[key].classList.toggle("active", key === name);
+        });
+        try { history.replaceState(null, "", "#" + name); } catch (e) {}
+      }
+      tabs.forEach(function (btn) {
+        btn.addEventListener("click", function () { activate(btn.getAttribute("data-tab")); });
+      });
+      var hash = (location.hash || "").replace(/^#/, "");
+      if (names.indexOf(hash) >= 0) activate(hash);
+    })();
+    (function () {
+      var STORAGE_KEY = "baby-stuff-growth-achievements-v1";
+      var box = document.getElementById("growth-achievements-card");
+      if (!box) return;
+      var inputs = box.querySelectorAll("input[type=checkbox][data-key]");
+      var isPublic = window.__babyStuffApplyPublicReadonly && window.__babyStuffApplyPublicReadonly();
+      // public GitHub Pages: read-only, no localStorage
+      if (isPublic || (window.__babyStuffIsPrivateHost && !window.__babyStuffIsPrivateHost())) {
+        inputs.forEach(function (el) { el.checked = false; el.disabled = true; });
+        var clearPub = document.getElementById("growth-achievements-clear");
+        if (clearPub) clearPub.disabled = true;
+        return;
+      }
+      function load() {
+        var data = {};
+        try { data = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}") || {}; } catch (e) { data = {}; }
+        inputs.forEach(function (el) {
+          var key = el.getAttribute("data-key");
+          el.checked = !!data[key];
+        });
+      }
+      function save() {
+        var data = {};
+        inputs.forEach(function (el) {
+          data[el.getAttribute("data-key")] = !!el.checked;
+        });
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch (e) {}
+      }
+      inputs.forEach(function (el) {
+        el.addEventListener("change", save);
+      });
+      var clearBtn = document.getElementById("growth-achievements-clear");
+      if (clearBtn) {
+        clearBtn.addEventListener("click", function () {
+          if (!window.confirm("清除全部發展成就勾選？")) return;
+          inputs.forEach(function (el) { el.checked = false; });
+          try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+        });
+      }
+      load();
+    })();
+    (function () {
+      var STORAGE_KEY = "baby-stuff-vax-ticks-v1";
+      var box = document.getElementById("vax-ticks-card");
+      var panel = document.getElementById("panel-health");
+      if (!box && !panel) return;
+      var inputs = (panel || box).querySelectorAll("input[type=checkbox][data-key]");
+      var isPublic = window.__babyStuffApplyPublicReadonly && window.__babyStuffApplyPublicReadonly();
+      if (isPublic || (window.__babyStuffIsPrivateHost && !window.__babyStuffIsPrivateHost())) {
+        inputs.forEach(function (el) { el.checked = false; el.disabled = true; });
+        var clearPub = document.getElementById("vax-ticks-clear");
+        if (clearPub) clearPub.disabled = true;
+        return;
+      }
+      function migrateLegacy(data) {
+        // Old single keys (e.g. bcg) → treat as 健康院 checked; keep old key until cleared
+        var keys = Object.keys(data);
+        keys.forEach(function (k) {
+          if (!data[k]) return;
+          if (k.indexOf("-mchc") >= 0 || k.indexOf("-private") >= 0) return;
+          var mchc = k + "-mchc";
+          if (!(mchc in data)) data[mchc] = true;
+        });
+        return data;
+      }
+      function load() {
+        var data = {};
+        try { data = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}") || {}; } catch (e) { data = {}; }
+        data = migrateLegacy(data);
+        inputs.forEach(function (el) {
+          var key = el.getAttribute("data-key");
+          el.checked = !!data[key];
+        });
+      }
+      function save() {
+        var data = {};
+        try { data = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}") || {}; } catch (e) { data = {}; }
+        inputs.forEach(function (el) {
+          data[el.getAttribute("data-key")] = !!el.checked;
+        });
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch (e) {}
+      }
+      inputs.forEach(function (el) {
+        el.addEventListener("change", save);
+      });
+      var clearBtn = document.getElementById("vax-ticks-clear");
+      if (clearBtn) {
+        clearBtn.addEventListener("click", function () {
+          if (!window.confirm("清除全部針程勾選？")) return;
+          inputs.forEach(function (el) { el.checked = false; });
+          try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+        });
+      }
+      load();
+    })();
+    (function () {
+      var STORAGE_KEY = "baby-stuff-growth-diary-v1";
+      var DOB = new Date(2026, 5, 9); // 2026-06-09 local
+      var card = document.getElementById("growth-diary-card");
+      if (!card) return;
+      // public GitHub Pages: read-only UI, no localStorage read/write
+      var privateHost = window.__babyStuffIsPrivateHost ? window.__babyStuffIsPrivateHost() : false;
+      if (!privateHost) {
+        if (window.__babyStuffApplyPublicReadonly) window.__babyStuffApplyPublicReadonly();
+        var latestPub = document.getElementById("diary-latest");
+        var emptyPub = document.getElementById("diary-empty");
+        var tablePub = document.getElementById("diary-table");
+        if (latestPub) latestPub.textContent = "公開頁只睇唔改 — 未顯示本機成長紀錄。";
+        if (emptyPub) {
+          emptyPub.hidden = false;
+          emptyPub.textContent = "公開頁唔儲存／唔顯示成長日記；請用本機 :8891 輸入。";
+        }
+        if (tablePub) tablePub.hidden = true;
+        return;
+      }
+      var form = document.getElementById("growth-diary-form");
+      var dateEl = document.getElementById("diary-date");
+      var weightEl = document.getElementById("diary-weight");
+      var lengthEl = document.getElementById("diary-length");
+      var headEl = document.getElementById("diary-head");
+      var sourceEl = document.getElementById("diary-source");
+      var noteEl = document.getElementById("diary-note");
+      var latestEl = document.getElementById("diary-latest");
+      var tableEl = document.getElementById("diary-table");
+      var tbody = document.getElementById("diary-tbody");
+      var emptyEl = document.getElementById("diary-empty");
+      var exportBtn = document.getElementById("diary-export");
+      var clearBtn = document.getElementById("diary-clear-all");
+
+      function todayISO() {
+        var d = new Date();
+        var m = String(d.getMonth() + 1).padStart(2, "0");
+        var day = String(d.getDate()).padStart(2, "0");
+        return d.getFullYear() + "-" + m + "-" + day;
+      }
+
+      function parseISODate(s) {
+        if (!s || !/^\d{4}-\d{2}-\d{2}$/.test(s)) return null;
+        var p = s.split("-").map(Number);
+        return new Date(p[0], p[1] - 1, p[2]);
+      }
+
+      function ageLabel(measureISO) {
+        var m = parseISODate(measureISO);
+        if (!m || m < DOB) return "—";
+        var months = (m.getFullYear() - DOB.getFullYear()) * 12 + (m.getMonth() - DOB.getMonth());
+        var dayDiff = m.getDate() - DOB.getDate();
+        if (dayDiff < 0) {
+          months -= 1;
+          var prev = new Date(m.getFullYear(), m.getMonth(), 0);
+          dayDiff += prev.getDate();
+        }
+        if (months < 0) return "—";
+        if (months === 0 && dayDiff === 0) return "初生";
+        if (months === 0) return "約" + dayDiff + "日";
+        if (dayDiff === 0) return "約" + months + "個月";
+        return "約" + months + "個月又" + dayDiff + "日";
+      }
+
+      function loadEntries() {
+        try {
+          var raw = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+          return Array.isArray(raw) ? raw : [];
+        } catch (e) {
+          return [];
+        }
+      }
+
+      function saveEntries(list) {
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(list)); } catch (e) {}
+      }
+
+      function fmtNum(v, digits) {
+        if (v == null || v === "" || isNaN(v)) return "—";
+        return Number(v).toFixed(digits);
+      }
+
+      function sortNewest(list) {
+        return list.slice().sort(function (a, b) {
+          if (a.date !== b.date) return a.date < b.date ? 1 : -1;
+          return (b.createdAt || "").localeCompare(a.createdAt || "");
+        });
+      }
+
+      function render() {
+        var list = sortNewest(loadEntries());
+        tbody.innerHTML = "";
+        if (!list.length) {
+          tableEl.hidden = true;
+          emptyEl.hidden = false;
+          latestEl.textContent = "未有紀錄。";
+          return;
+        }
+        emptyEl.hidden = true;
+        tableEl.hidden = false;
+        var top = list[0];
+        latestEl.textContent = "最近一次：" + top.date +
+          " · 體重 " + fmtNum(top.weightKg, 2) + " kg" +
+          " · 身長 " + fmtNum(top.lengthCm, 1) + " cm" +
+          " · 頭圍 " + fmtNum(top.headCm, 1) + " cm";
+        list.forEach(function (row) {
+          var tr = document.createElement("tr");
+          tr.innerHTML =
+            "<td>" + row.date + "</td>" +
+            "<td>" + ageLabel(row.date) + "</td>" +
+            "<td class=\"num\">" + fmtNum(row.weightKg, 2) + "</td>" +
+            "<td class=\"num\">" + fmtNum(row.lengthCm, 1) + "</td>" +
+            "<td class=\"num\">" + fmtNum(row.headCm, 1) + "</td>" +
+            "<td>" + (row.source || "—") + "</td>" +
+            "<td>" + (row.note ? String(row.note).replace(/</g, "&lt;") : "—") + "</td>" +
+            "<td><button type=\"button\" class=\"btn-del\" data-id=\"" + row.id + "\">刪除</button></td>";
+          tbody.appendChild(tr);
+        });
+      }
+
+      function parseOptional(el) {
+        var v = el.value.trim();
+        if (!v) return null;
+        var n = Number(v);
+        return isFinite(n) && n >= 0 ? n : null;
+      }
+
+      form.addEventListener("submit", function (ev) {
+        ev.preventDefault();
+        var date = dateEl.value;
+        var weightKg = parseOptional(weightEl);
+        var lengthCm = parseOptional(lengthEl);
+        var headCm = parseOptional(headEl);
+        if (!date) {
+          window.alert("請填量度日期。");
+          return;
+        }
+        if (weightKg == null && lengthCm == null && headCm == null) {
+          window.alert("請至少填體重、身長或頭圍其中一項。");
+          return;
+        }
+        var entry = {
+          id: String(Date.now()) + "-" + Math.random().toString(36).slice(2, 8),
+          date: date,
+          weightKg: weightKg,
+          lengthCm: lengthCm,
+          headCm: headCm,
+          source: sourceEl.value || "其他",
+          note: (noteEl.value || "").trim(),
+          createdAt: new Date().toISOString()
+        };
+        var list = loadEntries();
+        list.push(entry);
+        saveEntries(list);
+        weightEl.value = "";
+        lengthEl.value = "";
+        headEl.value = "";
+        noteEl.value = "";
+        dateEl.value = todayISO();
+        render();
+      });
+
+      tbody.addEventListener("click", function (ev) {
+        var btn = ev.target.closest("button[data-id]");
+        if (!btn) return;
+        var id = btn.getAttribute("data-id");
+        if (!window.confirm("刪除呢筆成長紀錄？")) return;
+        var list = loadEntries().filter(function (r) { return r.id !== id; });
+        saveEntries(list);
+        render();
+      });
+
+      if (clearBtn) {
+        clearBtn.addEventListener("click", function () {
+          if (!window.confirm("清除全部成長日記紀錄？呢個動作唔可以還原。")) return;
+          try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+          render();
+        });
+      }
+
+      if (exportBtn) {
+        exportBtn.addEventListener("click", function () {
+          var list = sortNewest(loadEntries());
+          var blob = new Blob([JSON.stringify(list, null, 2)], { type: "application/json" });
+          var a = document.createElement("a");
+          a.href = URL.createObjectURL(blob);
+          a.download = "baby-growth-diary-" + todayISO() + ".json";
+          document.body.appendChild(a);
+          a.click();
+          setTimeout(function () {
+            URL.revokeObjectURL(a.href);
+            a.remove();
+          }, 500);
+        });
+      }
+
+      dateEl.value = todayISO();
+      render();
+    })();
+  </script>
+</body>
+</html>
